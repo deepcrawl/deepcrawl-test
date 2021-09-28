@@ -1,5 +1,8 @@
+import { GraphAPIClient } from "./graph-api/graph-api-client";
 import { IGraphAPIClient } from "./graph-api/interfaces/graph-api-client.interface";
+import { ITestSDKClientCreateOptions } from "./interfaces/test-sdk-client-create-options.interface";
 import { IToolsAPIClient } from "./tools-api/interfaces/tools-api-client.interface";
+import { ToolsAPIClient } from "./tools-api/tools-api-client";
 
 export interface IRunBuildOptions {
   userKeyId: string;
@@ -9,8 +12,14 @@ export interface IRunBuildOptions {
   isStartOnly?: boolean;
 }
 
-export class TestSdkClient {
+export class TestSDKClient {
   constructor(private readonly graphAPIClient: IGraphAPIClient, private readonly toolsAPIClient: IToolsAPIClient) {}
+
+  public static create(options?: ITestSDKClientCreateOptions): TestSDKClient {
+    const graphAPIClient = new GraphAPIClient(options?.graphAPI);
+    const toolsAPIClient = new ToolsAPIClient(options?.toolsAPI);
+    return new TestSDKClient(graphAPIClient, toolsAPIClient);
+  }
 
   public async runBuild({
     userKeyId,

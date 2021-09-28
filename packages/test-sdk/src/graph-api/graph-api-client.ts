@@ -3,20 +3,17 @@ import fetch from "node-fetch";
 
 import { deleteAuthTokenGQL } from "./gql/delete-auth-token.gql";
 import { getAuthTokenGQL } from "./gql/get-auth-token.gql";
+import { IGraphAPIClientOptions } from "./interfaces/graph-api-client-options.interface";
 import { IGraphAPIClient } from "./interfaces/graph-api-client.interface";
-
-export interface IGraphAPIClientOptions {
-  url: string;
-}
 
 export class GraphAPIClient implements IGraphAPIClient {
   private readonly apolloClient: ApolloClient<NormalizedCacheObject>;
 
-  constructor({ url }: IGraphAPIClientOptions) {
+  constructor(options?: IGraphAPIClientOptions) {
     this.apolloClient = new ApolloClient({
       cache: new InMemoryCache(),
       link: new HttpLink({
-        uri: url,
+        uri: options?.url ?? "https://graph.deepcrawl.com/",
         // TODO: https://github.com/apollographql/apollo-link/issues/513
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         fetch: <any>fetch,

@@ -2,11 +2,11 @@ import * as sinon from "sinon";
 
 import { GraphAPIClientMock } from "./__tests__/mock/graph-api-client.mock";
 import { ToolsAPIClientMock } from "./__tests__/mock/tools-api-client.mock";
-import { TestSdkClient } from "./test-sdk-client";
+import { TestSDKClient } from "./test-sdk-client";
 
 const graphAPIClient = new GraphAPIClientMock();
 const toolsAPIClient = new ToolsAPIClientMock();
-const testSDKClient = new TestSdkClient(graphAPIClient, toolsAPIClient);
+const testSDKClient = new TestSDKClient(graphAPIClient, toolsAPIClient);
 
 const sandbox = sinon.createSandbox();
 const deleteAuthTokenSpy = sandbox.spy(graphAPIClient, "deleteAuthToken");
@@ -23,7 +23,7 @@ describe("TestSDKClient", () => {
           userKeyId: "user-key-id-error",
           userKeySecret: "user-key-secret",
           testSuiteId: "test-suite-id",
-        })
+        }),
       ).rejects.toEqual(new Error("user-key-id-error"));
     });
 
@@ -38,7 +38,7 @@ describe("TestSDKClient", () => {
           userKeySecret,
           testSuiteId,
           ciBuildId,
-        })
+        }),
       ).rejects.toEqual(new Error(testSuiteId));
       expect(deleteAuthTokenSpy.calledOnceWith(`${userKeyId}|${userKeySecret}`)).toEqual(true);
     });
@@ -54,7 +54,7 @@ describe("TestSDKClient", () => {
           userKeySecret,
           testSuiteId,
           ciBuildId,
-        })
+        }),
       ).rejects.toEqual(new Error("build-id-error"));
     });
 

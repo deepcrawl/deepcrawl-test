@@ -8,6 +8,7 @@ import { BuildNotFinishedError } from "./errors/build-not-finished.error";
 import { BuildResultPollingTimeoutError } from "./errors/build-result-polling-timeout.error";
 import { IPollBuildResultsResponse } from "./interfaces/poll-build-results-response.interface";
 import { IStartBuildResponse } from "./interfaces/start-build-response.interface";
+import { IToolsAPIClientOptions } from "./interfaces/tools-api-client-options.interface";
 import { IToolsAPIClient } from "./interfaces/tools-api-client.interface";
 
 enum ToolsAPIRoute {
@@ -20,38 +21,19 @@ interface IRequestParameters {
   body: Record<string, unknown>;
 }
 
-export interface IToolsAPIClientOptions {
-  baseURL: string;
-  startBuildPath: string;
-  pollBuildResultsPath: string;
-}
-
 export class ToolsAPIClient implements IToolsAPIClient {
   private routes: Map<ToolsAPIRoute, string>;
 
-  constructor(options: IToolsAPIClientOptions) {
+  constructor(options?: IToolsAPIClientOptions) {
     this.routes = this.initRoutes(options);
   }
 
-  private initRoutes({
-    baseURL,
-    startBuildPath,
-    pollBuildResultsPath,
-  }: Pick<IToolsAPIClientOptions, "baseURL" | "startBuildPath" | "pollBuildResultsPath">): Map<ToolsAPIRoute, string> {
+  private initRoutes(options?: Pick<IToolsAPIClientOptions, "url">): Map<ToolsAPIRoute, string> {
     const routes = new Map<ToolsAPIRoute, string>();
-    routes.set(ToolsAPIRoute.StartBuild, `${baseURL}${startBuildPath}`);
-    routes.set(ToolsAPIRoute.PollBuildResults, `${baseURL}${pollBuildResultsPath}`);
+    const url = options?.url ?? "https://tools.automator.deepcrawl.com";
+    routes.set(ToolsAPIRoute.StartBuild, new URL("/start", url).toString());
+    routes.set(ToolsAPIRoute.PollBuildResults, new URL("/poller", url).toString());
     return routes;
-  }
-
-  private makePostRequest<T>(parameters: IRequestParameters): Promise<AxiosResponse<T>> {
-    const routeURL = this.routes.get(parameters.route);
-    if (!routeURL) throw new Error("Route URL not available");
-    return axios.post<T>(routeURL, JSON.stringify(parameters.body), {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
   }
 
   public async startBuild(authToken: string, testSuiteId: string, ciBuildId?: string): Promise<string> {
@@ -94,5 +76,15 @@ export class ToolsAPIClient implements IToolsAPIClient {
     });
     if (response.status !== 200) throw new BuildNotFinishedError();
     return response.data.passed;
+  }
+
+  private makePostRequest<T>(parameters: IRequestParameters): Promise<AxiosResponse<T>> {
+    const routeURL = this.routes.get(parameters.route);
+    if (!routeURL) throw new Error("Route URL not available");
+    return axios.post<T>(routeURL, JSON.stringify(parameters.body), {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }
 }
