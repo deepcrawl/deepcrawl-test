@@ -1,0 +1,8 @@
+**/cdk.out/
+**/coverage/
+**/dist/
+**/lib/
+**/node_modules/
+
+CHANGELOG.md
+*.graphql
