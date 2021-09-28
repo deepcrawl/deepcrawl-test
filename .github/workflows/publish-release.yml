@@ -1,0 +1,47 @@
+name: Publish release
+
+on:
+  repository_dispatch:
+    types: [release]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PUBLISH_BOT_TOKEN }}
+          ref: "develop"
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: https://npm.pkg.github.com/
+          scope: "@deepcrawl"
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Restore keys from cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install
+        run: yarn install --frozen-lockfile --prefer-offline
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_PACKAGE_READ_TOKEN}}
+      - name: Build
+        run: yarn build
+      - name: Publish
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          ./.github/bin/github-registry-auth.sh
+          yarn lerna publish --no-commit-hooks --conventional-graduate --include-merged-tags --yes
+        env:
+          GH_TOKEN: ${{ secrets.PUBLISH_BOT_TOKEN }}
+          GIT_REGISTRY_TOKEN: ${{ secrets.PUBLISH_BOT_TOKEN }}
