@@ -1,18 +1,11 @@
 {
   "version": "independent",
   "npmClient": "yarn",
-  "ignoreChanges": [
-    "**/__tests__/**",
-    "**/docs/**",
-    "**/lib/**",
-    "**/*.md",
-    "**/*.test.ts",
-    "**/*.integration.ts"
-  ],
+  "ignoreChanges": ["**/__tests__/**", "**/docs/**", "**/lib/**", "**/*.md", "**/*.test.ts", "**/*.integration.ts"],
   "useWorkspaces": true,
   "command": {
     "version": {
-      "allowBranch": ["main", "develop"],
+      "allowBranch": ["main"],
       "conventionalCommits": true,
       "createRelease": "github",
       "exact": true,
