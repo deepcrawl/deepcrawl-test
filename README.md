@@ -19,7 +19,7 @@ At the moment we offer the following possibilites of connecting Deepcrawl Test t
 Crawling a test environment can take several minutes depending on the configured speed and number of URLs. During your initial usage of Deepcrawl Test, you may not want Deepcrawl Test to delay your builds, or have the ability to block a deployment.
 In this case, you can configure the shell script to have a "start only" behaviour.
 
-Under this strategy, the integration will start a crawl of the environment then immediate return a passed status. The crawl will continue in the background and will send a notification of the test results on completion.
+Under this strategy, the integration will start a crawl of the environment and then immediately return a passed status. The crawl will continue in the background and a notification will be sent when test results are ready.
 
 ## Configuring tests
 
@@ -29,4 +29,4 @@ All configuration takes place within the Deepcrawl Test app - contact your DeepC
 
 ## Using the Deepcrawl Test API
 
-The Deepcrawl Test API uses the GraphQL protocol to make it easy to retrieve any information or make any changes you'd like to make. [You can find the full API documentation here.](https://deepcrawl.github.io/automator-sdk/)
+The Deepcrawl Test API can directly be used, without using any of our options specified above. It uses the GraphQL protocol to make it easy to retrieve any information or make any changes you need. [You can find the full API documentation here.](https://deepcrawl.github.io/automator-sdk/)
