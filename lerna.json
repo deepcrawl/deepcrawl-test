@@ -1,0 +1,28 @@
+{
+  "version": "independent",
+  "npmClient": "yarn",
+  "ignoreChanges": [
+    "**/__tests__/**",
+    "**/docs/**",
+    "**/lib/**",
+    "**/*.md",
+    "**/*.test.ts",
+    "**/*.integration.ts"
+  ],
+  "useWorkspaces": true,
+  "command": {
+    "version": {
+      "allowBranch": ["main", "develop"],
+      "conventionalCommits": true,
+      "createRelease": "github",
+      "exact": true,
+      "message": "chore(release): publish",
+      "preid": "next"
+    },
+    "publish": {
+      "distTag": "latest",
+      "preDistTag": "next",
+      "registry": "https://npm.pkg.github.com/"
+    }
+  }
+}
