@@ -14,21 +14,16 @@ Our public SDK, used to start builds on Deepcrawl Test App.
 
 Add `@deepcrawl/test-sdk` as a dependency:
 
+Using NPM:
+
 ```shell
-yarn add --dev \
-  eslint-config-deepcrawl \
-  @typescript-eslint/eslint-plugin@^4.8.2 \
-  eslint@^7.14.0 \
-  eslint-plugin-array-func@^3.1.7 \
-  eslint-plugin-clean-code@^0.1.12 \
-  eslint-plugin-filenames@^1.3.2 \
-  eslint-plugin-import@^2.22.1 \
-  eslint-plugin-jest@^24.1.3 \
-  eslint-plugin-json-format@^2.0.1 \
-  eslint-plugin-no-loops@^0.3.0 \
-  eslint-plugin-node@^11.1.0 \
-  eslint-plugin-promise@^4.2.1 \
-  eslint-plugin-sonarjs@^0.5.0
+npm install @deepcrawl/test-sdk
+```
+
+Using Yarn:
+
+```shell
+yarn add @deepcrawl/test-sdk
 ```
 
 ## Usage
