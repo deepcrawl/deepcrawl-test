@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.PUBLISH_BOT_TOKEN }}
-          ref: "develop"
+          ref: "main"
       - name: Setup node
         uses: actions/setup-node@v2
         with:
