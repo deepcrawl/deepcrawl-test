@@ -19,6 +19,9 @@
     "release": "lerna publish",
     "prepare": "is-ci || husky install"
   },
+  "resolutions": {
+    "ws": "7.4.6"
+  },
   "devDependencies": {
     "@types/jest": "27.0.1",
     "@types/node": "14.17.14",
