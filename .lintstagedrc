@@ -1,0 +1,6 @@
+{
+  "**/*.{md,yml}": "prettier --write",
+  "**/*.json": ["eslint --fix", "prettier --write"],
+  "**/*.{js,ts}": ["prettier --write", "eslint --fix"],
+  "**/*.rb": "rubocop -a"
+}
