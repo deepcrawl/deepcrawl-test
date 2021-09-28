@@ -2,7 +2,7 @@ import * as sinon from "sinon";
 
 import { GraphAPIClientMock } from "./__tests__/mock/graph-api-client.mock";
 import { ToolsAPIClientMock } from "./__tests__/mock/tools-api-client.mock";
-import { TestSDKClient } from "./test-nodejs-sdk-client";
+import { TestSDKClient } from "./test-sdk-client";
 
 const graphAPIClient = new GraphAPIClientMock();
 const toolsAPIClient = new ToolsAPIClientMock();

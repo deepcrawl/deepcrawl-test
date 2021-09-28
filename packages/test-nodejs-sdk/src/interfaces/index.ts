@@ -1,1 +1,1 @@
-export { ITestSDKClientCreateOptions } from "./test-nodejs-sdk-client-create-options.interface";
+export { ITestSDKClientCreateOptions } from "./test-sdk-client-create-options.interface";
