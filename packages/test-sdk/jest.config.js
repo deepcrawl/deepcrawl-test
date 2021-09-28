@@ -16,8 +16,5 @@ module.exports = {
       statements: 75,
     },
   },
-  setupFiles: ["./setupJest.js"],
-  setupFilesAfterEnv: ["jest-extended"],
-  testEnvironment: "node",
   roots: ["<rootDir>/src"],
 };
