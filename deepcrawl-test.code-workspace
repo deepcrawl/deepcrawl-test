@@ -1,9 +1,9 @@
 {
-  "folders": [{ "path": ".", "name": "root" }, { "path": "packages/test-sdk" }],
+  "folders": [{ "path": ".", "name": "root" }, { "path": "packages/test-nodejs-sdk" }],
   "settings": {
     "files.exclude": {
       ".idea": true,
-      "packages/test-sdk/**": true
+      "packages/test-nodejs-sdk/**": true
     },
     "html.format.enable": true,
     "jest.autoEnable": false,
@@ -15,7 +15,7 @@
       "**/coverage": true,
       "**/dist": true,
       "**/lib": true,
-      "packages/test-sdk/**": true
+      "packages/test-nodejs-sdk/**": true
     },
     "telemetry.enableTelemetry": false,
     "terminal.integrated.macOptionIsMeta": true,

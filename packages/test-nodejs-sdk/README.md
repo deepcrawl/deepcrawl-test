@@ -1,4 +1,4 @@
-# @deepcrawl/test-sdk
+# @deepcrawl/test-nodejs-sdk
 
 Our public SDK, used to start builds on Deepcrawl Test App.
 
@@ -12,18 +12,18 @@ Our public SDK, used to start builds on Deepcrawl Test App.
 
 ## Installation
 
-Add `@deepcrawl/test-sdk` as a dependency:
+Add `@deepcrawl/test-nodejs-sdk` as a dependency:
 
 Using NPM:
 
 ```shell
-npm install @deepcrawl/test-sdk
+npm install @deepcrawl/test-nodejs-sdk
 ```
 
 Using Yarn:
 
 ```shell
-yarn add @deepcrawl/test-sdk
+yarn add @deepcrawl/test-nodejs-sdk
 ```
 
 ## Usage

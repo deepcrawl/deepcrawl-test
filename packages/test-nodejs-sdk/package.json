@@ -1,10 +1,10 @@
 {
-  "name": "@deepcrawl/test-sdk",
+  "name": "@deepcrawl/test-nodejs-sdk",
   "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/deepcrawl/deepcrawl-test.git",
-    "directory": "packages/test-sdk"
+    "directory": "packages/test-nodejs-sdk"
   },
   "license": "UNLICENSED",
   "author": "DeepCrawl",

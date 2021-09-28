@@ -1,3 +1,3 @@
 module.exports = {
-  projects: ["<rootDir>/packages/test-sdk/"],
+  projects: ["<rootDir>/packages/test-nodejs-sdk/"],
 };

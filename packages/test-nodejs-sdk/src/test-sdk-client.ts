@@ -1,6 +1,6 @@
 import { GraphAPIClient } from "./graph-api/graph-api-client";
 import { IGraphAPIClient } from "./graph-api/interfaces/graph-api-client.interface";
-import { ITestSDKClientCreateOptions } from "./interfaces/test-sdk-client-create-options.interface";
+import { ITestSDKClientCreateOptions } from "./interfaces/test-nodejs-sdk-client-create-options.interface";
 import { IToolsAPIClient } from "./tools-api/interfaces/tools-api-client.interface";
 import { ToolsAPIClient } from "./tools-api/tools-api-client";
 

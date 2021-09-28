@@ -12,7 +12,7 @@ Users can define specific tests, thresholds, and severity of regressions in the 
 
 At the moment we offer the following possibilites of connecting Deepcrawl Test to your CI/CD pipeline:
 
-- [Deepcrawl Test SDK NodeJS Client](./packages/test-sdk/README.md)
+- [Deepcrawl Test SDK NodeJS Client](./packages/test-nodejs-sdk/README.md)
 
 ### Preventing Deepcrawl Test from delaying or blocking builds
 

@@ -6,7 +6,7 @@
   "repository": "github:deepcrawl/canary",
   "workspaces": {
     "packages": [
-      "packages/test-sdk"
+      "packages/test-nodejs-sdk"
     ]
   },
   "scripts": {
