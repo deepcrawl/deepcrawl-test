@@ -49,6 +49,5 @@
   "engineStrict": true,
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
-  },
-  "gitHead": "e6baf155d3f66e35e414ae3447703d836a930142"
+  }
 }
