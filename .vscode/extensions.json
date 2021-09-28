@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "jebbs.plantuml",
+    "ms-vscode.sublime-keybindings",
+    "ms-vsliveshare.vsliveshare",
+    "orta.vscode-jest",
+    "redhat.vscode-yaml",
+    "wayou.vscode-todo-highlight",
+    "zengxingxin.sort-js-object-keys"
+  ]
+}

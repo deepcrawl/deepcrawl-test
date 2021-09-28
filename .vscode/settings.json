@@ -1,0 +1,23 @@
+{
+  "[html]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false
+  },
+  "editor.formatOnSave": true,
+  "editor.rulers": [120],
+  "editor.tabSize": 2,
+  "eslint.enable": true,
+  "eslint.packageManager": "yarn",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "git.autofetch": true,
+  "git.fetchOnPull": true,
+  "javascript.preferences.quoteStyle": "double",
+  "prettier.printWidth": 120,
+  "prettier.singleQuote": false,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "jest.autoEnable": false,
+  "jest.runAllTestsFirst": false,
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

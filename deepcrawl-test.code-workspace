@@ -1,0 +1,39 @@
+{
+  "folders": [{ "path": ".", "name": "root" }, { "path": "packages/test-sdk" }],
+  "settings": {
+    "files.exclude": {
+      ".idea": true,
+      "packages/test-sdk/**": true
+    },
+    "html.format.enable": true,
+    "jest.autoEnable": false,
+    "jest.pathToJest": "yarn test",
+    "jest.runAllTestsFirst": false,
+    "search.exclude": {
+      "**/*.tsbuildinfo": true,
+      "**/cdk.out": true,
+      "**/coverage": true,
+      "**/dist": true,
+      "**/lib": true,
+      "packages/test-sdk/**": true
+    },
+    "telemetry.enableTelemetry": false,
+    "terminal.integrated.macOptionIsMeta": true,
+    "typescript.tsdk": "root/node_modules/typescript/lib",
+    "workbench.colorCustomizations": {
+      "editorWarning.foreground": "#837214"
+    },
+    "workbench.fontAliasing": "auto",
+    "yaml.format.printWidth": 120,
+    "eslint.format.enable": true,
+    "eslint.packageManager": "yarn",
+    "editor.codeActionsOnSaveTimeout": 2000,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "javascript.preferences.importModuleSpecifier": "relative",
+    "javascript.preferences.quoteStyle": "double",
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "typescript.preferences.quoteStyle": "double"
+  }
+}
