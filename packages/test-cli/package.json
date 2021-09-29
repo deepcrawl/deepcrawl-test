@@ -1,6 +1,7 @@
 {
   "name": "@deepcrawl/test-cli",
   "version": "0.1.2",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/deepcrawl/deepcrawl-test.git",
@@ -14,10 +15,12 @@
   ],
   "scripts": {
     "prebuild": "rimraf dist tsconfig.tsbuildinfo",
-    "build": "yarn build:src && yarn build:exec",
+    "build": "yarn ncc build --out dist/src src/index.ts",
+    "prebuild:exec": "yarn build",
     "build:exec": "pkg dist/src/index.js -t node14-macos-x64,node14-linux-x64,node14-win-x64 --output dist/deepcrawl-test",
-    "build:src": "yarn ncc build --out dist/src src/index.ts",
-    "lint:check": "eslint --ext .ts src package.json"
+    "lint:check": "eslint --ext .ts src package.json",
+    "prerelease": "yarn install && yarn build:exec",
+    "release": "echo 1"
   },
   "dependencies": {
     "@deepcrawl/test-nodejs-sdk": "0.1.2",
