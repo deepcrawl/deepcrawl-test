@@ -10,6 +10,7 @@ interface IRunBuildArguments {
   help?: boolean;
 }
 
+// eslint-disable-next-line max-lines-per-function
 (async (): Promise<void> => {
   const args = parse<IRunBuildArguments>(
     {
@@ -42,5 +43,8 @@ interface IRunBuildArguments {
   const { testSuiteId, ciBuildId, startOnly: isStartOnly } = args;
   await testSDKClient.runBuild({ userKeyId, userKeySecret, testSuiteId, ciBuildId, isStartOnly });
 })()
-  .then(() => {})
+  .then(() => {
+    return;
+  })
+  // eslint-disable-next-line no-console
   .catch(console.log);

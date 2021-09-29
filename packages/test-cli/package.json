@@ -15,8 +15,8 @@
   "scripts": {
     "prebuild": "rimraf dist tsconfig.tsbuildinfo",
     "build": "yarn build:src && yarn build:exec",
-    "build:src": "yarn ncc build --out dist/src src/index.ts",
     "build:exec": "pkg dist/src/index.js -t node14-macos-x64,node14-linux-x64,node14-win-x64 --output dist/deepcrawl-test",
+    "build:src": "yarn ncc build --out dist/src src/index.ts",
     "lint:check": "eslint --ext .ts src package.json"
   },
   "dependencies": {
