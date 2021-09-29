@@ -1,11 +1,11 @@
-name: Publish release
+name: Release
 
 on:
-  repository_dispatch:
-    types: [release]
+  push:
+    branches: ["main"]
 
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout develop
@@ -14,15 +14,18 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.PUBLISH_BOT_TOKEN }}
           ref: "main"
+
       - name: Setup node
         uses: actions/setup-node@v2
         with:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
           scope: "@deepcrawl"
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - name: Restore keys from cache
         uses: actions/cache@v2
         with:
@@ -30,12 +33,24 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+
       - name: Install
         run: yarn install --frozen-lockfile --prefer-offline
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_PACKAGE_READ_TOKEN}}
+
       - name: Build
         run: yarn build
+
+      - name: Prettier
+        run: yarn prettier:check
+
+      - name: Lint
+        run: yarn lerna run --since $BASE_BRANCH --concurrency 1 --stream lint:check
+
+      - name: Test
+        run: yarn lerna run --since $BASE_BRANCH --concurrency 1 --stream test:ci
+
       - name: Publish
         run: |
           git config --global user.name "github-actions[bot]"
