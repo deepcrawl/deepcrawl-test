@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.2",
   "npmClient": "yarn",
   "ignoreChanges": [
     "**/__tests__/**",
@@ -26,5 +26,9 @@
       "preDistTag": "next",
       "registry": "https://npm.pkg.github.com/"
     }
-  }
+  },
+  "packages": [
+    "packages/test-cli",
+    "packages/test-nodejs-sdk"
+  ]
 }

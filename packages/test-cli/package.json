@@ -8,6 +8,7 @@
   },
   "license": "UNLICENSED",
   "author": "DeepCrawl",
+  "main": "dist/src/index.js",
   "files": [
     "dist"
   ],
