@@ -1,5 +1,5 @@
 {
-  "version": "0.1.2",
+  "version": "independent",
   "npmClient": "yarn",
   "ignoreChanges": ["**/__tests__/**", "**/docs/**", "**/lib/**", "**/*.md", "**/*.test.ts", "**/*.integration.ts"],
   "useWorkspaces": true,
