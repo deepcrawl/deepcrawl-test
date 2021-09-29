@@ -10,6 +10,8 @@ Our public SDK, used to start builds on Deepcrawl Test App.
 @deepcrawl:registry=https://npm.pkg.github.com/
 ```
 
+test
+
 ## Installation
 
 Add `@deepcrawl/test-nodejs-sdk` as a dependency:
