@@ -1,0 +1,37 @@
+{
+  "name": "@deepcrawl/test-cli",
+  "version": "0.1.2",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/deepcrawl/deepcrawl-test.git",
+    "directory": "packages/test-cli"
+  },
+  "license": "UNLICENSED",
+  "author": "DeepCrawl",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist tsconfig.tsbuildinfo",
+    "build": "yarn build:src && yarn build:exec",
+    "build:src": "yarn ncc build --out dist/src src/index.ts",
+    "build:exec": "pkg dist/src/index.js -t node14-macos-x64,node14-linux-x64,node14-win-x64 --output dist/deepcrawl-test",
+    "lint:check": "eslint --ext .ts src package.json"
+  },
+  "dependencies": {
+    "@deepcrawl/test-nodejs-sdk": "0.1.2",
+    "ts-command-line-args": "2.1.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "0.30.0",
+    "pkg": "5.3.2"
+  },
+  "engines": {
+    "node": ">=14.15.4",
+    "yarn": "^1.22.0"
+  },
+  "engineStrict": true,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
