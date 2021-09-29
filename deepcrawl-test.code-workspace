@@ -1,8 +1,10 @@
 {
-  "folders": [{ "path": ".", "name": "root" }, { "path": "packages/test-nodejs-sdk" }],
+  "folders": [{ "path": ".", "name": "root" }, { "path": "packages/test-cli" }, { "path": "packages/test-nodejs-sdk" }],
   "settings": {
     "files.exclude": {
       ".idea": true,
+      "packages": true,
+      "packages/test-cli/**": true,
       "packages/test-nodejs-sdk/**": true
     },
     "html.format.enable": true,
@@ -15,6 +17,7 @@
       "**/coverage": true,
       "**/dist": true,
       "**/lib": true,
+      "packages/test-cli/**": true,
       "packages/test-nodejs-sdk/**": true
     },
     "telemetry.enableTelemetry": false,

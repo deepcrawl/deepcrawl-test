@@ -1,8 +1,8 @@
 name: Release
 
 on:
-  push:
-    branches: ["main"]
+  repository_dispatch:
+    types: [release]
 
 jobs:
   release:
@@ -37,7 +37,7 @@ jobs:
       - name: Install
         run: yarn install --frozen-lockfile --prefer-offline
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_PACKAGE_READ_TOKEN}}
 
       - name: Build
         run: yarn build
@@ -56,7 +56,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           ./.github/bin/github-registry-auth.sh
-          yarn lerna publish --no-commit-hooks --conventional-graduate --include-merged-tags --yes
+          yarn lerna version --no-commit-hooks --conventional-graduate --include-merged-tags --yes
         env:
           GH_TOKEN: ${{ secrets.PUBLISH_BOT_TOKEN }}
           GIT_REGISTRY_TOKEN: ${{ secrets.PUBLISH_BOT_TOKEN }}
