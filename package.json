@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "description": "DeepCrawl Test monorepo.",
-  "repository": "github:deepcrawl/canary",
+  "repository": "github:deepcrawl/deepcrawl-test",
   "workspaces": {
     "packages": [
       "packages/test-cli",
