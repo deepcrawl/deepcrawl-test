@@ -1,8 +1,8 @@
 name: Release
 
 on:
-  push:
-    branches: ["main"]
+  repository_dispatch:
+    types: [release]
 
 jobs:
   release:
@@ -37,7 +37,7 @@ jobs:
       - name: Install
         run: yarn install --frozen-lockfile --prefer-offline
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_PACKAGE_READ_TOKEN}}
 
       - name: Build
         run: yarn build
