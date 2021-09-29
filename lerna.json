@@ -1,20 +1,11 @@
 {
   "version": "0.1.2",
   "npmClient": "yarn",
-  "ignoreChanges": [
-    "**/__tests__/**",
-    "**/docs/**",
-    "**/lib/**",
-    "**/*.md",
-    "**/*.test.ts",
-    "**/*.integration.ts"
-  ],
+  "ignoreChanges": ["**/__tests__/**", "**/docs/**", "**/lib/**", "**/*.md", "**/*.test.ts", "**/*.integration.ts"],
   "useWorkspaces": true,
   "command": {
     "version": {
-      "allowBranch": [
-        "main"
-      ],
+      "allowBranch": ["main"],
       "conventionalCommits": true,
       "createRelease": "github",
       "exact": true,
@@ -27,8 +18,5 @@
       "registry": "https://npm.pkg.github.com/"
     }
   },
-  "packages": [
-    "packages/test-cli",
-    "packages/test-nodejs-sdk"
-  ]
+  "packages": ["packages/test-cli", "packages/test-nodejs-sdk"]
 }
