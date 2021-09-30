@@ -63,23 +63,21 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           ./.github/bin/github-registry-auth.sh
-          yarn lerna version --no-commit-hooks --conventional-graduate --include-merged-tags --yes
+          yarn lerna publish --no-commit-hooks --conventional-graduate --include-merged-tags --yes
         env:
           GH_TOKEN: ${{ secrets.PUBLISH_BOT_TOKEN }}
           GIT_REGISTRY_TOKEN: ${{ secrets.PUBLISH_BOT_TOKEN }}
+
+      - name: Get monorepo version
+        id: monorepo-version
+        uses: martinbeentjes/npm-get-version-action@master
 
       - name: Build @deepcrawl/test-cli executables
         run: yarn build:executables
         working-directory: packages/test-cli
 
-      - name: Get @deepcrawl/test-cli package version
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@master
-        with:
-          path: packages/test-cli
-
       - name: Upload @deepcrawl/test-cli assets to release
-        run: gh release upload @deepcrawl/test-cli@${{ steps.package-version.outputs.current-version }} ./dist/deepcrawl-test-linux ./dist/deepcrawl-test-macos ./dist/deepcrawl-test-win.exe
+        run: gh release upload v${{ steps.monorepo-version.outputs.current-version }} ./dist/deepcrawl-test-linux ./dist/deepcrawl-test-macos ./dist/deepcrawl-test-win.exe
         working-directory: packages/test-cli
         env:
           GH_TOKEN: ${{ secrets.PUBLISH_BOT_TOKEN }}
