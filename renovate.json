@@ -6,19 +6,7 @@
     "github>whitesource/merge-confidence:beta",
     "schedule:earlyMondays"
   ],
-  "docker": {
-    "enabled": true,
-    "major": {
-      "enabled": false
-    },
-    "minor": {
-      "enabled": true
-    }
-  },
-  "docker-compose": {
-    "enabled": true
-  },
-  "labels": ["dependencies :package:", ":rocket: merge it!"],
+  "labels": ["dependencies :package:"],
   "packageRules": [
     {
       "groupName": "all dependencies",
@@ -26,7 +14,7 @@
       "packagePatterns": ["*"]
     }
   ],
-  "reviewers": ["team:deepcrawl/middle-tier-devs"],
+  "reviewers": ["andre-bitca-dc"],
   "separateMajorMinor": true,
   "supportPolicy": ["lts_latest"],
   "vulnerabilityAlerts": {
