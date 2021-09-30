@@ -79,7 +79,7 @@ jobs:
           path: packages/test-cli
 
       - name: Upload @deepcrawl/test-cli assets to release
-        run: gh release upload v${{ steps.package-version.outputs.current-version }} ./dist/deepcrawl-test-linux ./dist/deepcrawl-test-macos ./dist/deepcrawl-test-win.exe
+        run: gh release upload v${{ steps.package-version.outputs.current-version }} ./dist/deepcrawl-test-linux ./dist/deepcrawl-test-macos ./dist/deepcrawl-test-win.exe | exit 0
         working-directory: packages/test-cli
         env:
           GH_TOKEN: ${{ secrets.PUBLISH_BOT_TOKEN }}
