@@ -1,6 +1,6 @@
 {
   "name": "@deepcrawl/test-nodejs-sdk",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "ssh://git@github.com/deepcrawl/deepcrawl-test.git",

@@ -1,6 +1,6 @@
 {
   "name": "@deepcrawl/test-cli",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "private": true,
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "lint:check": "eslint --ext .ts src package.json"
   },
   "dependencies": {
-    "@deepcrawl/test-nodejs-sdk": "0.1.2",
+    "@deepcrawl/test-nodejs-sdk": "1.0.0",
     "ts-command-line-args": "2.1.0"
   },
   "devDependencies": {
