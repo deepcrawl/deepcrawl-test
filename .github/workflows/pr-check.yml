@@ -1,13 +1,11 @@
-name: Build Check
+name: PR Check
 
 on:
   pull_request:
-    branches: ["main"]
-  push:
-    branches: ["main"]
+    branches: ["main", "develop"]
 
 jobs:
-  build-check:
+  check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main

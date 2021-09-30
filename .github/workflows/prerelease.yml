@@ -1,0 +1,85 @@
+name: Prerelease
+
+on:
+  push:
+    branches: ["develop"]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install prerequisites
+        run: |
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+          sudo apt-add-repository https://cli.github.com/packages
+          sudo apt update
+          sudo apt install gh
+
+      - name: Checkout main
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PUBLISH_BOT_TOKEN }}
+          ref: "main"
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: https://npm.pkg.github.com/
+          scope: "@deepcrawl"
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Restore keys from cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install
+        run: yarn install --frozen-lockfile --prefer-offline
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGE_READ_TOKEN }}
+
+      - name: Build
+        run: yarn build
+
+      - name: Prettier
+        run: yarn prettier:check
+
+      - name: Lint
+        run: yarn lerna run --since $BASE_BRANCH --concurrency 1 --stream lint:check
+
+      - name: Test
+        run: yarn lerna run --since $BASE_BRANCH --concurrency 1 --stream test:ci
+
+      - name: Publish
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          ./.github/bin/github-registry-auth.sh
+          yarn lerna publish --no-commit-hooks --conventional-prerelease --include-merged-tags --yes
+        env:
+          GH_TOKEN: ${{ secrets.PUBLISH_BOT_TOKEN }}
+          GIT_REGISTRY_TOKEN: ${{ secrets.PUBLISH_BOT_TOKEN }}
+
+      - name: Build @deepcrawl/test-cli executables
+        run: yarn build:executables
+        working-directory: packages/test-cli
+
+      - name: Get @deepcrawl/test-cli package version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+        with:
+          path: packages/test-cli
+
+      - name: Upload @deepcrawl/test-cli assets to release
+        run: gh release upload v${{ steps.package-version.outputs.current-version }} ./dist/deepcrawl-test-linux ./dist/deepcrawl-test-macos ./dist/deepcrawl-test-win.exe
+        working-directory: packages/test-cli
+        env:
+          GH_TOKEN: ${{ secrets.PUBLISH_BOT_TOKEN }}
