@@ -3,8 +3,8 @@ import { parse } from "ts-command-line-args";
 
 interface IRunBuildArguments {
   testSuiteId: string;
-  userKeyId?: string;
-  userKeySecret?: string;
+  userKeyId: string;
+  userKeySecret: string;
   ciBuildId?: string;
   startOnly?: boolean;
   help?: boolean;
@@ -14,34 +14,31 @@ interface IRunBuildArguments {
 (async (): Promise<void> => {
   const args = parse<IRunBuildArguments>(
     {
-      testSuiteId: { type: String, description: "The test suite id." },
+      testSuiteId: { type: String, description: "The test suite ID." },
       userKeyId: {
         type: String,
-        optional: true,
-        description: "The user key id, which can be provided as env variable DEEPCRAWL_TEST_USER_KEY_ID.",
+        defaultValue: process.env.DEEPCRAWL_TEST_USER_KEY_ID,
+        description: "The user key ID, which can also be provided as env variable DEEPCRAWL_TEST_USER_KEY_ID.",
       },
       userKeySecret: {
         type: String,
-        optional: true,
-        description: "The user key secret, which can be provided as env variable DEEPCRAWL_TEST_USER_KEY_SECRET.",
+        defaultValue: process.env.DEEPCRAWL_TEST_USER_KEY_SECRET,
+        description: "The user key secret, which can also be provided as env variable DEEPCRAWL_TEST_USER_KEY_SECRET.",
       },
-      ciBuildId: { type: String, optional: true, description: "The corresponding CI Build ID." },
+      ciBuildId: { type: String, optional: true, description: "The corresponding build ID in your CI/CD pipeline." },
       startOnly: {
         type: Boolean,
         optional: true,
-        description: "Only starts the build without waiting for it to finish.",
+        description: "Flags if should only start the build without waiting for it to finish.",
       },
-      help: { type: Boolean, optional: true, alias: "h", description: "Prints this usage guide." },
+      help: { type: Boolean, optional: true, alias: "h", description: "Prints the usage guide." },
     },
     {
       helpArg: "help",
     },
   );
-  const userKeyId = args.userKeyId ?? process.env.DEEPCRAWL_TEST_USER_KEY_ID ?? "";
-  const userKeySecret = args.userKeySecret ?? process.env.DEEPCRAWL_TEST_USER_KEY_SECRET ?? "";
   const testSDKClient = TestSDKClient.create();
-  const { testSuiteId, ciBuildId, startOnly: isStartOnly } = args;
-  await testSDKClient.runBuild({ userKeyId, userKeySecret, testSuiteId, ciBuildId, isStartOnly });
+  await testSDKClient.runBuild({ ...args, isStartOnly: args.startOnly });
 })()
   .then(() => {
     return;
