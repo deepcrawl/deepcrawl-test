@@ -12,7 +12,9 @@ Users can define specific tests, thresholds, and severity of regressions in the 
 
 At the moment we offer the following possibilites of connecting Deepcrawl Test to your CI/CD pipeline:
 
+- [Deepcrawl Test CLI Tools](./packages/test-cli/README.md)
 - [Deepcrawl Test SDK NodeJS Client](./packages/test-nodejs-sdk/README.md)
+- [Deepcrawl Test API](https://deepcrawl.github.io/automator-sdk/)
 
 ### Preventing Deepcrawl Test from delaying or blocking builds
 

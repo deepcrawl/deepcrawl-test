@@ -1,6 +1,6 @@
 # @deepcrawl/test-nodejs-sdk
 
-Our public SDK, used to start builds on Deepcrawl Test App.
+Deepcrawl Test SDK NodeJS Client can be used to start builds on Deepcrawl Test App, by adding it as a dependency into your NodeJS project.
 
 ## Prerequisites
 
@@ -9,8 +9,6 @@ Our public SDK, used to start builds on Deepcrawl Test App.
 ```
 @deepcrawl:registry=https://npm.pkg.github.com/
 ```
-
-test
 
 ## Installation
 
