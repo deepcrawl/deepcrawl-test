@@ -79,4 +79,5 @@ jobs:
 
       - name: Upload @deepcrawl/test-cli assets to release
         run: |
+          gh auth login --with-token ${{ secrets.PUBLISH_BOT_TOKEN }}
           gh release upload --clobber @deepcrawl/test-cli@${{ steps.package-version.outputs.current-version }} ./packages/test-cli/dist/deepcrawl-test-linux ./packages/test-cli/dist/deepcrawl-test-macos ./packages/test-cli/dist/deepcrawl-test-win.exe
