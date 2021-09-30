@@ -1,7 +1,9 @@
-name: PR Check
+name: Build Check
 
 on:
   pull_request:
+    branches: ["main"]
+  push:
     branches: ["main"]
 
 jobs:
@@ -50,3 +52,7 @@ jobs:
 
       - name: Test
         run: yarn lerna run --since $BASE_BRANCH --concurrency 1 --stream test:ci
+
+      - name: Build @deepcrawl/test-cli executables
+        run: yarn build:executables
+        working-directory: packages/test-cli
