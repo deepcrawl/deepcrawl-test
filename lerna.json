@@ -13,6 +13,7 @@
   "command": {
     "version": {
       "allowBranch": [
+        "develop",
         "main"
       ],
       "conventionalCommits": true,

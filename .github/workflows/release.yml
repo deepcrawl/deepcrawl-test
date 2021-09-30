@@ -15,12 +15,12 @@ jobs:
           sudo apt update
           sudo apt install gh
 
-      - name: Checkout main
+      - name: Checkout develop
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
           token: ${{ secrets.PUBLISH_BOT_TOKEN }}
-          ref: "main"
+          ref: "develop"
 
       - name: Setup node
         uses: actions/setup-node@v2
