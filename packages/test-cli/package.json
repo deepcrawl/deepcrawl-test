@@ -16,9 +16,9 @@
   "scripts": {
     "prebuild": "rimraf dist tsconfig.tsbuildinfo",
     "build": "yarn ncc build --out dist/src src/index.ts",
-    "lint:check": "eslint --ext .ts src package.json",
-    "prerelease": "yarn && yarn build",
-    "release": "pkg dist/src/index.js -t node14-macos-x64,node14-linux-x64,node14-win-x64 --output dist/deepcrawl-test --no-bytecode --public-packages \"*\" --public --options no-warnings"
+    "prebuild:executables": "yarn && yarn build",
+    "build:executables": "pkg dist/src/index.js -t node14-macos-x64,node14-linux-x64,node14-win-x64 --output dist/deepcrawl-test --no-bytecode --public-packages \"*\" --public --options no-warnings",
+    "lint:check": "eslint --ext .ts src package.json"
   },
   "dependencies": {
     "@deepcrawl/test-nodejs-sdk": "0.1.2",

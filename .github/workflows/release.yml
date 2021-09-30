@@ -8,7 +8,14 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout develop
+      - name: Install prerequisites
+        run: |
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+          sudo apt-add-repository https://cli.github.com/packages
+          sudo apt update
+          sudo apt install gh
+
+      - name: Checkout main
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
@@ -60,3 +67,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PUBLISH_BOT_TOKEN }}
           GIT_REGISTRY_TOKEN: ${{ secrets.PUBLISH_BOT_TOKEN }}
+
+      - name: Build executables
+        run: yarn lerna run --since $BASE_BRANCH --concurrency 1 --stream build:executables
+
+      - name: Get @deepcrawl/test-cli package version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+        with:
+          path: packages/test-cli
+
+      - name: Upload @deepcrawl/test-cli assets to release
+        run: |
+          gh release upload --clobber @deepcrawl/test-cli@${{ steps.package-version.outputs.current-version }} ./packages/test-cli/dist/deepcrawl-test-linux ./packages/test-cli/dist/deepcrawl-test-macos ./packages/test-cli/dist/deepcrawl-test-win.exe
