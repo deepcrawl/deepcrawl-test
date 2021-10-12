@@ -21,21 +21,21 @@
     "prepare": "is-ci || husky install"
   },
   "resolutions": {
-    "ws": "7.4.6"
+    "ws": "8.2.3"
   },
   "devDependencies": {
     "@types/jest": "27.0.1",
     "@types/node": "14.17.14",
-    "@typescript-eslint/eslint-plugin": "4.30.0",
+    "@typescript-eslint/eslint-plugin": "5.0.0",
     "commitizen": "4.2.4",
-    "eslint": "7.32.0",
+    "eslint": "8.0.0",
     "eslint-config-deepcrawl": "5.9.0",
     "eslint-plugin-array-func": "3.1.7",
     "eslint-plugin-clean-code": "0.1.12",
     "eslint-plugin-filenames": "1.3.2",
     "eslint-plugin-graphql": "4.0.0",
     "eslint-plugin-import": "2.24.2",
-    "eslint-plugin-jest": "24.4.0",
+    "eslint-plugin-jest": "25.0.5",
     "eslint-plugin-json-format": "2.0.1",
     "eslint-plugin-no-loops": "0.3.0",
     "eslint-plugin-node": "11.1.0",
@@ -44,7 +44,7 @@
     "git-cz": "4.7.6",
     "husky": "7.0.2",
     "is-ci": "3.0.0",
-    "jest-junit": "12.2.0",
+    "jest-junit": "13.0.0",
     "lerna": "4.0.0",
     "postinstall-prepare": "2.0.0",
     "prettier": "2.3.2",
