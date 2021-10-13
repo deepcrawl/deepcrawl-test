@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0-next.0](https://github.com/deepcrawl/deepcrawl-test/compare/v1.0.0...v1.1.0-next.0) (2021-10-13)
+
+
+### Features
+
+* **test-cli:** add validation for empty strings ([#6](https://github.com/deepcrawl/deepcrawl-test/issues/6)) ([952780c](https://github.com/deepcrawl/deepcrawl-test/commit/952780ca8e1f34e6f25515084bf361540de216ee))
+
+
+
+
+
 # 1.0.0 (2021-09-30)
 
 
