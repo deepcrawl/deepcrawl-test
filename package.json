@@ -21,6 +21,7 @@
     "prepare": "is-ci || husky install"
   },
   "resolutions": {
+    "ansi-regex": "5.0.1",
     "ws": "7.4.6"
   },
   "devDependencies": {

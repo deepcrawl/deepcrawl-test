@@ -1,19 +1,21 @@
-name: PR Check
+name: Check
 
 on:
   pull_request:
+    branches: ["main", "develop"]
+  push:
     branches: ["main", "develop"]
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
+      - name: Checkout branch
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
-          ref: "main"
+          ref: ${{ github.ref }}
 
       - name: Setup node
         uses: actions/setup-node@v2
