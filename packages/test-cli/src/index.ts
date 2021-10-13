@@ -1,5 +1,8 @@
+/* eslint-disable no-console */
 import { TestSDKClient } from "@deepcrawl/test-nodejs-sdk";
 import { parse } from "ts-command-line-args";
+
+import { ValidationError } from "./errors/validation.error";
 
 interface IRunBuildArguments {
   testSuiteId: string;
@@ -8,6 +11,12 @@ interface IRunBuildArguments {
   ciBuildId?: string;
   startOnly?: boolean;
   help?: boolean;
+}
+
+function validateArgs({ testSuiteId, userKeyId, userKeySecret }: IRunBuildArguments): void {
+  if (testSuiteId === "") throw new ValidationError("--testSuiteId cannot be empty.");
+  if (userKeyId === "") throw new ValidationError("--userKeyId cannot be empty.");
+  if (userKeySecret === "") throw new ValidationError("--userKeySecret cannot be empty.");
 }
 
 // eslint-disable-next-line max-lines-per-function
@@ -37,11 +46,14 @@ interface IRunBuildArguments {
       helpArg: "help",
     },
   );
+  validateArgs(args);
   const testSDKClient = TestSDKClient.create();
   await testSDKClient.runBuild({ ...args, isStartOnly: args.startOnly });
 })()
   .then(() => {
     return;
   })
-  // eslint-disable-next-line no-console
-  .catch(console.log);
+  .catch(e => {
+    if (e instanceof ValidationError) console.log(e.message);
+    console.log(e);
+  });
