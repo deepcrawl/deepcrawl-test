@@ -1,8 +1,8 @@
 name: Prerelease
 
 on:
-  push:
-    branches: ["develop"]
+  repository_dispatch:
+    types: [prerelease]
 
 jobs:
   release:
