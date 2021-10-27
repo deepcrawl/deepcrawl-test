@@ -54,6 +54,7 @@ function validateArgs({ testSuiteId, userKeyId, userKeySecret }: IRunBuildArgume
     return;
   })
   .catch(e => {
-    if (e instanceof ValidationError) console.log(e.message);
-    console.log(e);
+    console.log(e.message);
+    // eslint-disable-next-line no-process-exit
+    return process.exit(1);
   });
