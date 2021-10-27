@@ -1,6 +1,6 @@
 # @deepcrawl/test-nodejs-sdk
 
-Deepcrawl Test SDK NodeJS Client can be used to start builds on Deepcrawl Test App, by adding it as a dependency into your NodeJS project.
+Automation Hub SDK NodeJS Client can be used to start builds on Automation Hub, by adding it as a dependency into your NodeJS project.
 
 ## Prerequisites
 
