@@ -1,6 +1,6 @@
 # @deepcrawl/test-cli
 
-Deepcrawl Test CLI Tools can be used to start builds by executing the executables provided.
+Automation Hub CLI Tools can be used to start builds by executing the executables provided.
 
 **You can download the CLI Tools from the [Releases Page](https://github.com/deepcrawl/deepcrawl-test/releases), by browsing the Assets on the release marked as `Latest Release`.**
 
