@@ -12,6 +12,7 @@ Users can define specific tests, thresholds, and severity of regressions in the 
 
 At the moment we offer the following possibilites of connecting Automation Hub to your CI/CD pipeline:
 
+- [Automation Hub Github Action](https://github.com/deepcrawl/deepcrawl-test-action)
 - [Automation Hub CLI Tools](./packages/test-cli/README.md)
 - [Automation Hub SDK NodeJS Client](./packages/test-nodejs-sdk/README.md)
 - [Automation Hub API](https://deepcrawl.github.io/automator-sdk/)
