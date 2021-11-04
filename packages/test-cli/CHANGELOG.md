@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2-next.0](https://github.com/deepcrawl/deepcrawl-test/compare/v1.1.1...v1.1.2-next.0) (2021-11-04)
+
+
+### Bug Fixes
+
+* **test-cli:** exit with code 1 and log to error stream ([#16](https://github.com/deepcrawl/deepcrawl-test/issues/16)) ([b8fc512](https://github.com/deepcrawl/deepcrawl-test/commit/b8fc512c5ed0e37f9e832c9d9b1d2a73ca84f0f6))
+
+
+
+
+
 ## [1.1.1](https://github.com/deepcrawl/deepcrawl-test/compare/v1.1.1-next.0...v1.1.1) (2021-10-27)
 
 **Note:** Version bump only for package @deepcrawl/test-cli
