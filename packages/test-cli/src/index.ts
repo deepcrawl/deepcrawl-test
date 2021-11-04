@@ -14,6 +14,9 @@ interface IRunBuildArguments {
 }
 
 function validateArgs({ testSuiteId, userKeyId, userKeySecret }: IRunBuildArguments): void {
+  // ts-command-line-args exits with exit code 0
+  if (typeof testSuiteId === "undefined" || typeof userKeyId === "undefined" || typeof userKeySecret === "undefined")
+    throw new Error();
   if (testSuiteId === "") throw new ValidationError("--testSuiteId cannot be empty.");
   if (userKeyId === "") throw new ValidationError("--userKeyId cannot be empty.");
   if (userKeySecret === "") throw new ValidationError("--userKeySecret cannot be empty.");
@@ -45,6 +48,7 @@ function validateArgs({ testSuiteId, userKeyId, userKeySecret }: IRunBuildArgume
     {
       helpArg: "help",
     },
+    false,
   );
   validateArgs(args);
   const testSDKClient = TestSDKClient.create();
@@ -54,7 +58,7 @@ function validateArgs({ testSuiteId, userKeyId, userKeySecret }: IRunBuildArgume
     return;
   })
   .catch(e => {
-    console.log(e.message);
+    if (e.message) console.error(e.message);
     // eslint-disable-next-line no-process-exit
     return process.exit(1);
   });
