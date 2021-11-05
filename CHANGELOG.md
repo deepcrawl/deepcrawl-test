@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2-next.1](https://github.com/deepcrawl/deepcrawl-test/compare/v1.1.2-next.0...v1.1.2-next.1) (2021-11-05)
+
+
+### Bug Fixes
+
+* **test-cli:** update ts-command-line-args to use exit code 1 ([#17](https://github.com/deepcrawl/deepcrawl-test/issues/17)) ([1184363](https://github.com/deepcrawl/deepcrawl-test/commit/1184363f10abe1f50f90e2b62fe1c54a2ad427c6))
+
+
+
+
+
 ## [1.1.2-next.0](https://github.com/deepcrawl/deepcrawl-test/compare/v1.1.1...v1.1.2-next.0) (2021-11-04)
 
 
