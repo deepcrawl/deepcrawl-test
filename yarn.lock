@@ -8332,10 +8332,10 @@ trim-newlines@^3.0.0:
   resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-3.0.1.tgz#260a5d962d8b752425b32f3a7db0dcacd176c144"
   integrity sha512-c1PTsA3tYrIsLGkJkzHF+w9F2EyxfXGo4UyJc4pFL++FMjnq0HJS69T3M7d//gKrFKwy429bouPescbjecU+Zw==
 
-ts-command-line-args@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/ts-command-line-args/-/ts-command-line-args-2.1.0.tgz#1f75ceabaf794fd6171a2c749e95d27e5231f89b"
-  integrity sha512-C9BWuFzNLAmEmfnxBhq40YHu7CptJd7ytLHqtD8xRaIA0jZBtTdo+u32OlMHxGvoegUfinnMh41kcjvaZ1RiFA==
+ts-command-line-args@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/ts-command-line-args/-/ts-command-line-args-2.2.0.tgz#655e10451b06c86d318e9467546da4d19b773a55"
+  integrity sha512-RedEejZyhiEAOgBkIVxB4QC/SRYtl98D7b7epWB9e6E+TmK8KstXBu3WdnhGbMHicLkHoG7sCAmu+F+ASzLFHA==
   dependencies:
     chalk "^4.1.0"
     command-line-args "^5.1.1"
