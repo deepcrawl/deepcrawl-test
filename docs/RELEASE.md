@@ -1,6 +1,6 @@
 # Releasing Automation Hub CircleCI Orb
 
-## Pre release
+## Pre-Release
 
 The Pre-Release is usually done in order to be tested by the QA. After it is validated, we can proceed with the release.
 
