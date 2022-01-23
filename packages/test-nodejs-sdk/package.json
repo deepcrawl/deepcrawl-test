@@ -25,7 +25,7 @@
     "@apollo/client": "^3.4.15",
     "axios": "^0.21.4",
     "graphql": "^15.6.0",
-    "node-fetch": "^2.6.2",
+    "node-fetch": "^3.1.1",
     "pino": "^6.13.3",
     "pino-pretty": "^7.0.1"
   },
