@@ -22,11 +22,11 @@
   },
   "dependencies": {
     "@deepcrawl/test-nodejs-sdk": "1.0.0",
-    "ts-command-line-args": "2.2.0"
+    "ts-command-line-args": "2.2.1"
   },
   "devDependencies": {
-    "@vercel/ncc": "0.30.0",
-    "pkg": "5.3.2"
+    "@vercel/ncc": "0.33.3",
+    "pkg": "5.5.2"
   },
   "engines": {
     "node": ">=14.15.4",
