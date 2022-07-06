@@ -4,12 +4,14 @@ import { MAX_POLLING_TIME, POLLING_INTERVAL } from "../_common/constants";
 import { sleep } from "../_common/helpers/sleep.helper";
 import { loggerService } from "../_common/services/logger.service";
 
-import { BuildNotFinishedError } from "./errors/build-not-finished.error";
-import { BuildResultPollingTimeoutError } from "./errors/build-result-polling-timeout.error";
-import { IPollBuildResultsResponse } from "./interfaces/poll-build-results-response.interface";
-import { IStartBuildResponse } from "./interfaces/start-build-response.interface";
-import { IToolsAPIClientOptions } from "./interfaces/tools-api-client-options.interface";
-import { IToolsAPIClient } from "./interfaces/tools-api-client.interface";
+import { BuildNotFinishedError, BuildResultPollingTimeoutError } from "./errors";
+import {
+  BuildStatus,
+  IPollBuildResultsResponse,
+  IStartBuildResponse,
+  IToolsAPIClient,
+  IToolsAPIClientOptions,
+} from "./interfaces";
 
 enum ToolsAPIRoute {
   StartBuild,
@@ -89,8 +91,8 @@ export class ToolsAPIClient implements IToolsAPIClient {
   }
 
   private logResults({ passed: didTestsPass, status }: IPollBuildResultsResponse): void {
-    if (status === "Cancelled") {
-      loggerService.info("Build was canceled");
+    if (status === BuildStatus.Aborted || status === BuildStatus.Cancelled) {
+      loggerService.info(`Build was ${status}`);
     } else {
       loggerService.info(`DeepCrawl Tests ${didTestsPass ? "Passed" : "Failed"}`);
     }
