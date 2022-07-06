@@ -40,7 +40,7 @@ describe("TestSDKClient", () => {
           ciBuildId,
         }),
       ).rejects.toEqual(new Error(testSuiteId));
-      expect(deleteAuthTokenSpy.calledOnceWith(`${userKeyId}|${userKeySecret}`)).toEqual(true);
+      expect(deleteAuthTokenSpy.calledOnceWith(`${userKeyId}|${userKeySecret}`)).toBe(true);
     });
 
     it("should throw error and delete token if tools api client #poll throws error", async () => {
@@ -70,8 +70,8 @@ describe("TestSDKClient", () => {
         ciBuildId,
         isStartOnly: true,
       });
-      expect(pollSpy.notCalled).toEqual(true);
-      expect(deleteAuthTokenSpy.calledOnceWith(`${userKeyId}|${userKeySecret}`)).toEqual(true);
+      expect(pollSpy.notCalled).toBe(true);
+      expect(deleteAuthTokenSpy.calledOnceWith(`${userKeyId}|${userKeySecret}`)).toBe(true);
     });
 
     it("should delete token in the end", async () => {
@@ -85,7 +85,7 @@ describe("TestSDKClient", () => {
         testSuiteId,
         ciBuildId,
       });
-      expect(deleteAuthTokenSpy.calledOnceWith(`${userKeyId}|${userKeySecret}`)).toEqual(true);
+      expect(deleteAuthTokenSpy.calledOnceWith(`${userKeyId}|${userKeySecret}`)).toBe(true);
     });
   });
 });
