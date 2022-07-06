@@ -32,7 +32,7 @@
   "devDependencies": {
     "@types/jest": "27.0.2",
     "@types/nock": "11.1.0",
-    "@types/node-fetch": "2.5.12",
+    "@types/node-fetch": "2.6.2",
     "@types/pino": "6.3.11",
     "@types/q": "1.5.5",
     "@types/sinon": "10.0.4",
