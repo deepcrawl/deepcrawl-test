@@ -50,7 +50,7 @@ describe("ToolsAPIClient", () => {
             buildId,
           });
           expect(this.req.headers["content-type"]).toBe("application/json");
-          return [200, { passed: true }];
+          return [200, { passed: true, status: "Finished" }];
         });
       await toolsAPIClient.poll(authToken, buildId);
     });
@@ -70,7 +70,7 @@ describe("ToolsAPIClient", () => {
             .post("/poller")
             .reply(function () {
               expect(true).toBe(true);
-              return [200, { passed: true }];
+              return [200, { passed: true, status: "Finished" }];
             });
           return [202];
         });
