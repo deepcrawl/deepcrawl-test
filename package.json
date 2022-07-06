@@ -14,7 +14,6 @@
     "build": "wsrun --serial --exclude-missing build",
     "commit": "cz",
     "lint": "wsrun --serial lint:check",
-    "postinstall": "yarn audit",
     "prettier:check": "prettier --list-different .",
     "prettier:fix": "prettier --write .",
     "release": "lerna publish",
