@@ -22,7 +22,7 @@ Releasing is done from `develop` branch, by triggering the following event:
 curl -H "Accept: application/vnd.github.everest-preview+json" \
      -H "Authorization: token ${GITHUB_PUBLISH_TOKEN}" \
      --request POST \
-     --data '{"event_type": "prerelease"}' \
+     --data '{"event_type": "release"}' \
      https://api.github.com/repos/deepcrawl/deepcrawl-test/dispatches
 ```
 
