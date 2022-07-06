@@ -55,8 +55,8 @@ export class ToolsAPIClient implements IToolsAPIClient {
     options = { pollingInterval: POLLING_INTERVAL, maxPollingTime: MAX_POLLING_TIME },
   ): Promise<void> {
     try {
-      const didTestsPass = await this.getResults(token, buildId);
-      loggerService.info(`DeepCrawl Tests ${didTestsPass ? "Passed" : "Failed"}`);
+      const results = await this.getResults(token, buildId);
+      this.logResults(results);
     } catch (e) {
       if (!(e instanceof BuildNotFinishedError)) throw e;
       loggerService.info("Waiting for DeepCrawl Test Results ...");
@@ -66,7 +66,7 @@ export class ToolsAPIClient implements IToolsAPIClient {
     }
   }
 
-  private async getResults(token: string, buildId: string): Promise<boolean> {
+  private async getResults(token: string, buildId: string): Promise<IPollBuildResultsResponse> {
     const response = await this.makePostRequest<IPollBuildResultsResponse>({
       route: ToolsAPIRoute.PollBuildResults,
       body: {
@@ -75,7 +75,7 @@ export class ToolsAPIClient implements IToolsAPIClient {
       },
     });
     if (response.status !== 200) throw new BuildNotFinishedError();
-    return response.data.passed;
+    return response.data;
   }
 
   private makePostRequest<T>(parameters: IRequestParameters): Promise<AxiosResponse<T>> {
@@ -86,5 +86,13 @@ export class ToolsAPIClient implements IToolsAPIClient {
         "Content-Type": "application/json",
       },
     });
+  }
+
+  private logResults({ passed: didTestsPass, status }: IPollBuildResultsResponse): void {
+    if (status === "Cancelled") {
+      loggerService.info("Build was canceled");
+    } else {
+      loggerService.info(`DeepCrawl Tests ${didTestsPass ? "Passed" : "Failed"}`);
+    }
   }
 }
