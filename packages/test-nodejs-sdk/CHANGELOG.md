@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3-next.0](https://github.com/deepcrawl/deepcrawl-test/compare/v1.1.2...v1.1.3-next.0) (2022-07-06)
+
+
+### Bug Fixes
+
+* **test-nodejs-sdk:** improve logging for Aborted/Cancelled Builds ([#25](https://github.com/deepcrawl/deepcrawl-test/issues/25)) ([6d0fcac](https://github.com/deepcrawl/deepcrawl-test/commit/6d0fcacdcbaebff9a9c27ced91d448981b69dc6f))
+
+
+
+
+
 # 1.0.0 (2021-09-30)
 
 
