@@ -13,7 +13,7 @@ export class GraphAPIClient implements IGraphAPIClient {
     this.apolloClient = new ApolloClient({
       cache: new InMemoryCache(),
       link: new HttpLink({
-        uri: options?.url ?? "https://graph.deepcrawl.com/",
+        uri: options?.url ?? "https://api.lumar.io/graphql",
         // TODO: https://github.com/apollographql/apollo-link/issues/513
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         fetch: <any>fetch,
