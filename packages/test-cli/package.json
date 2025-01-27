@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@deepcrawl/test-nodejs-sdk": "1.1.3",
-    "ts-command-line-args": "2.5.1"
+    "ts-command-line-args": "2.2.0"
   },
   "devDependencies": {
     "@vercel/ncc": "0.38.3",
